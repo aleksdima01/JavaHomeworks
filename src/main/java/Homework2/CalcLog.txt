@@ -1,0 +1,8 @@
+июл 04, 2023 2:48:09 PM Homeworks.Homework2 calculator
+INFO: First number: 5.0
+июл 04, 2023 2:48:11 PM Homeworks.Homework2 calculator
+INFO: Second number: 7.0
+июл 04, 2023 2:48:15 PM Homeworks.Homework2 calculator
+INFO: Operation division!
+июл 04, 2023 2:48:15 PM Homeworks.Homework2 calculator
+INFO: Result: 0.7142857142857143
