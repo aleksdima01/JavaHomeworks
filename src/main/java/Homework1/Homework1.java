@@ -1,4 +1,4 @@
-package Homeworks;
+package Homework1;
 import java.util.Scanner;
 public class Homework1 {
     static Scanner scanner = new Scanner(System.in);

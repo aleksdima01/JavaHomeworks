@@ -1,4 +1,4 @@
-package Homeworks;
+package Homework2;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -16,6 +16,7 @@ public class Homework2 {
             System.out.println("1 - String Builder");
             System.out.println("2 - Сортировка пузырьком с логированием");
             System.out.println("3 - Калькулятор с логгированием");
+            System.out.println("4 - Задача про студентов!");
             System.out.println("0 - Завершение работы приложения");
             int no = Integer.parseInt(scanner.nextLine());
             System.out.println(" ");
@@ -31,6 +32,10 @@ public class Homework2 {
                 case 3:
                     System.out.println("Выбран калькулятор с логгированием!");
                     calculator();
+                    break;
+                case 4:
+                    System.out.println("Задача про студентов!");
+                    students();
                     break;
                 case 0:
                     System.out.println("Завершение работы приложения.");
@@ -138,6 +143,53 @@ public class Homework2 {
                 System.out.printf("Результат деления: %.2f\n", result);
                 logger.log(Level.INFO, "Result: " + result);
                 break;
+        }
+    }
+
+    public static void students() {
+        /**
+         * [3] Дана json строка (можно сохранить в файл и читать из файла)
+         * [{"фамилия":"Иванов","оценка":"5","предмет":"Математика"},{"фамилия":"Петрова","оценка":"4","предмет":"Информатика"},{"фамилия":"Краснов","оценка":"5","предмет":"Физика"}]
+         * Написать метод(ы), который распарсит json и, используя StringBuilder, создаст строки вида: Студент [фамилия] получил [оценка] по предмету [предмет].
+         * Пример вывода:
+         * Студент Иванов получил 5 по предмету Математика.
+         * Студент Петрова получил 4 по предмету Информатика.
+         * Студент Краснов получил 5 по предмету Физика.
+         */
+
+         final String JSON =
+                    "[{\"фамилия\":\"Иванов\",\"оценка\":\"5\", \"предмет\":\"Математика\"}," +
+                            "{\"фамилия\" : \"Петрова\" ,\"оценка\" :\"4\" ,\"предмет\" : \"Информатика\"}," +
+                            "{\"фамилия\":\"Краснов\",\"оценка\":\"5\",\"предмет\":\"Физика\"}]";
+             final String ELEMENT1 = "Студент ";
+            final String ELEMENT2 = " получил ";
+             final String ELEMENT3 = " по предмету ";
+
+
+                StringBuilder sb = new StringBuilder();
+
+                String newJSON = JSON
+                        .replaceAll("\\{", "")
+                        .replaceAll("\\}", "")
+                        .replace("\"", "")
+                        .replace("[", " ")
+                        .replace("]", " ");
+                System.out.println(newJSON);
+                String[] parts = newJSON.split(",");
+                for (String part : parts) {
+                    String[] params = part.split(":");
+                    if ("фамилия".equals(params[0].trim())) {
+                        sb = new StringBuilder(ELEMENT1)
+                                .append(params[1]);
+                    } else if ("оценка".equals(params[0].trim()))
+                        sb.append(ELEMENT2)
+                                .append(params[1]);
+                    else if ("предмет".equals(params[0].trim())) {
+                        sb.append(ELEMENT3).append(params[1]);
+                        System.out.println(sb);
+
+
+            }
         }
     }
 }
