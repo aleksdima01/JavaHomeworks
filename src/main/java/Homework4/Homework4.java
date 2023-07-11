@@ -20,7 +20,7 @@ public class Homework4 {
         while (f) {
             System.out.println("Укажите номер задачи:");
             System.out.println("1 - Reverse ArrayList");
-            System.out.println("2 - Calculator with cancelled last operation");
+            System.out.println("2 - Калькулятор с регистрацией действий");
             System.out.println("3 - Удаление последнего действия калькулятора");
             //System.out.println("4 - Задача про студентов!");
             System.out.println("0 - Завершение работы приложения");
@@ -32,17 +32,13 @@ public class Homework4 {
                     reverseList();
                     break;
                 case 2:
-                    System.out.println("Выбран калькулятор с отменой последнего действия!");
+                    System.out.println("Выбран калькулятор с регистрацией действий!");
                     calculator();
                     break;
                 case 3:
                     System.out.println("Удаление последнего действия из калькулятора!");
                     deleting();
                     break;
-//                case 4:
-//                    System.out.println("Задача про студентов!");
-//                    students();
-//                    break;
                 case 0:
                     System.out.println("Завершение работы приложения.");
                     f = false;
@@ -130,15 +126,17 @@ public class Homework4 {
         list.add(result);
         bigList.add(list);
         deque.addLast(list);
-        System.out.println(bigList);
-        System.out.println(deque);
-    }
+        System.out.printf("Операции калькулятора: %s\n",bigList);
+           }
 
     public static void deleting() {
-
-        deque.pollLast();
-        bigList.clear();
-        bigList.addAll(deque);
-        System.out.println(deque);
+        if (deque.isEmpty())
+            System.out.println("Действий у калькулятора не было! Сначала совершите действие калькулятором!");
+        else {
+            deque.pollLast();
+            bigList.clear();
+            bigList.addAll(deque);
+            System.out.println(deque);
+        }
     }
 }
