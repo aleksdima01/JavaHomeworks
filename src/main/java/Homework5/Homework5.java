@@ -3,6 +3,7 @@ package Homework5;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import Homework5.Phones;
 
 
 /*Написать простой класс Телефонный Справочник (с помощью HashMap), который хранит в себе список фамилий и телефонных номеров.
@@ -14,40 +15,32 @@ import java.util.List;
         взаимодействие с пользователем через консоль и т.д). Консоль использовать только для вывода результатов проверки телефонного справочника.*/
 public class Homework5 {
 
+
+
     public static void main(String[] args) {
-        String[] contacts = {
-                "Григорьев 4678456",
-                "Фокин 3489589",
-                "Шестаков 3457903",
-                "Хохлов 95390294",
-                "Шубин 1235759",
-                "Гущина 4834532",
-                "Брагина 8524577",
-                "Афанасьева 8630734",
-                "Рыбакова 8704360",
-                "Лазарева 8703457",
-                "Бирюков 7864324",
-                "Копылов 9974523",
-                "Горбунов 6750245",
-                "Лыткин 4357678",
-                "Соколов 3457897"
-        };
-        myHashMap(contacts);
+//        String[] contacts = {
+//
+//                "Хохлов 95390294",
+//                "Шубин 1235759",
+//                "Гущина 4834532",
+//                "Брагина 8524577",
+//                "Афанасьева 8630734",
+//                "Рыбакова 8704360",
+//                "Лазарева 8703457",
+//                "Бирюков 7864324",
+//                "Копылов 9974523",
+//                "Горбунов 6750245",
+//                "Лыткин 4357678",
+//                "Соколов 3457897"
+//        };
+        myHashMap();
     }
 
-    public static void myHashMap(String[] contacts) {
-        HashMap<List<String>, Integer> book = new HashMap<>();
-        for (String contact : contacts) {
-            String[] studentParts = contact.split(" ");
-           int a = Integer.parseInt(studentParts[1]);
-            ArrayList<String> lst = new ArrayList<>();
-            lst.add(studentParts[0]);
-            System.out.println(lst);
-            book.put(lst,a);
-
-        }
-        System.out.println(book);
-
+    public static void myHashMap() {
+        HashMap<String,Integer> phoneBook = new HashMap<>();
+        phoneBook.put(Phones.person1.getName(), Phones.person1.getPhoneNumber());
+        //System.out.println(Phones.person1);
+        System.out.println(phoneBook);
     }
 }
 
