@@ -2,9 +2,6 @@ package Homework5;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import Homework5.Phones;
-
 
 /*Написать простой класс Телефонный Справочник (с помощью HashMap), который хранит в себе список фамилий и телефонных номеров.
         В этот телефонный справочник с помощью метода add() можно добавлять записи, а с помощью метода get() искать номер телефона по фамилии.
@@ -16,31 +13,65 @@ import Homework5.Phones;
 public class Homework5 {
 
 
+   public static HashMap<String,ArrayList<Integer>> phoneBook = new HashMap<>();
 
     public static void main(String[] args) {
-//        String[] contacts = {
-//
-//                "Хохлов 95390294",
-//                "Шубин 1235759",
-//                "Гущина 4834532",
-//                "Брагина 8524577",
-//                "Афанасьева 8630734",
-//                "Рыбакова 8704360",
-//                "Лазарева 8703457",
-//                "Бирюков 7864324",
-//                "Копылов 9974523",
-//                "Горбунов 6750245",
-//                "Лыткин 4357678",
-//                "Соколов 3457897"
-//        };
-        myHashMap();
+        add(Phones.person1);
+        add(Phones.person2);
+        add(Phones.person3);
+        add(Phones.person4);
+        add(Phones.person5);
+        add(Phones.person6);
+        add(Phones.person7);
+        add(Phones.person8);
+        add(Phones.person9);
+        add(Phones.person10);
+        add("Ефремов",7432050);
+        add("Ефремов",7432050);
+
+        System.out.println(phoneBook);
+
+        get("Петров");
+        get("Брагина");
+        get("Фокин");
+        get("Ефремов");
+
     }
 
-    public static void myHashMap() {
-        HashMap<String,Integer> phoneBook = new HashMap<>();
-        phoneBook.put(Phones.person1.getName(), Phones.person1.getPhoneNumber());
-        //System.out.println(Phones.person1);
-        System.out.println(phoneBook);
+
+    public static void add(Phones phones) {
+        if (phoneBook.containsKey(phones.getName())){
+            phoneBook.get(phones.getName()).add(phones.getPhoneNumber());
+        }
+        else {
+            ArrayList<Integer> numbers = new ArrayList<>();
+            numbers.add(phones.getPhoneNumber());
+            phoneBook.put(phones.getName(),numbers);
+        }
+    }
+    public static void add(String name,Integer number) {
+        if (phoneBook.containsKey(name)){
+            if (phoneBook.get(name).contains(number)) {
+                System.out.println("Вы пытаетесь добавить такой же номер телефона в контакт!\nВведите другой номер номер телефона!");
+            }
+            else {
+                phoneBook.get(name).add(number);
+            }
+        }
+        else {
+            ArrayList<Integer> numbers = new ArrayList<>();
+            numbers.add(number);
+            phoneBook.put(name,numbers);
+        }
+    }
+
+    public static void get(String name) {
+        if (phoneBook.get(name) == null )
+            System.out.println("Такого контакта нет!");
+        else {
+            System.out.println("Запрошенный вами контакт и его номера:");
+            System.out.printf("%s %s\n", name, phoneBook.get(name));
+        }
     }
 }
 
