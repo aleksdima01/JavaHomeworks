@@ -1,5 +1,6 @@
 package OOPHomework3;
 
+import java.awt.image.TileObserver;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,5 +31,12 @@ public class StudentsGroupIterator implements Iterator<Student> {
     @Override
     public void remove() {
         studentsList.remove(counter);
+    }
+
+    @Override
+    public String toString() {
+        return "Iterator{" +
+                "studentsList=" + studentsList +
+                '}';
     }
 }
