@@ -1,6 +1,7 @@
 package OOPHomework3;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class StudentController {
@@ -34,25 +35,34 @@ public class StudentController {
         //  studentsGroupService.setStudentsGroup(studentsGroup1);
         // System.out.println(studentsGroup1);
         //studentsGroupService.removeStudentByFIO("Романов", "Сергей", "Иванович");
-        System.out.println(studentsGroup1);
+        // System.out.println(studentsGroup1);
         List<StudentsGroup> streamList1 = new ArrayList<>();
         List<StudentsGroup> streamList2 = new ArrayList<>();
         streamList1.add(studentsGroup1);
         streamList1.add(studentsGroup2);
-        streamList2.add(studentsGroup3);
+        streamList1.add(studentsGroup3);
         streamList2.add(studentsGroup4);
         streamList2.add(studentsGroup5);
         Stream stream1 = new Stream(streamList1);
         Stream stream2 = new Stream(streamList2);
-        System.out.println(stream1);
-        System.out.println(stream2);
+        System.out.println("Поток 1: " + stream1);
+        System.out.println("Поток 2: " + stream2);
         //  stream1.addGroup(studentsGroup3);
         // System.out.println(stream1);
         // System.out.println(stream1.iterator());
-        System.out.println(stream1.getCountGroups());
-        System.out.println(stream2.getCountGroups());
+        // System.out.println(stream1.getCountGroups());
+        // System.out.println(stream2.getCountGroups());
         //   System.out.println(stream1.compareTo(stream2));
         StreamComparator comparator = new StreamComparator();
-        comparator.compare(stream1, stream2);
+        // comparator.compare(stream1, stream2);
+        List<Stream> streamsList = new ArrayList<>();
+        streamsList.add(stream1);
+        streamsList.add(stream2);
+        StreamService streamService = new StreamService();
+        System.out.println("Список потоков до сортировки: " + streamsList);
+        streamService.sortStreams(streamsList);
+        System.out.println("Список потоков после сортировки: " + streamsList);
+
+
     }
 }

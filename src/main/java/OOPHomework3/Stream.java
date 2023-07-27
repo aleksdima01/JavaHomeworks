@@ -16,7 +16,7 @@ public class Stream implements Iterable<Student>, Comparable<Stream> {
     public String toString() {
         return "Stream{" +
                 "StreamStudents=" + streamStudents +
-                '}';
+                '}' + "\t";
     }
 
     @Override
