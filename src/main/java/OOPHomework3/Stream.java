@@ -1,9 +1,11 @@
 package OOPHomework3;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class Stream implements Iterable<Student>, Comparable<Stream> {
+public class Stream implements Iterable<StudentsGroup>, Comparable<Stream> {
     private List<StudentsGroup> streamStudents;
 
 
@@ -19,13 +21,13 @@ public class Stream implements Iterable<Student>, Comparable<Stream> {
                 '}' + "\t";
     }
 
-    @Override
-    public StudentsGroupIterator iterator() {
-        for (StudentsGroup studentsGroups : streamStudents) {
-            return new StudentsGroupIterator(studentsGroups);
-        }
-        return null;
-    }
+//    @Override
+//    public StudentsGroupIterator iterator() {
+//        for (StudentsGroup studentsGroups : streamStudents) {
+//            return new StudentsGroupIterator(studentsGroups);
+//        }
+//        return null;
+//    }
 
     public void addGroup(StudentsGroup studentsGroup) {
         if (studentsGroup != null) {
@@ -43,4 +45,10 @@ public class Stream implements Iterable<Student>, Comparable<Stream> {
         Integer size = streamStudents.size();
         return size.compareTo(o.getCountGroups());
     }
+
+    @Override
+    public Iterator<StudentsGroup> iterator() {
+        return new StreamIterator(streamStudents);
+    }
+
 }

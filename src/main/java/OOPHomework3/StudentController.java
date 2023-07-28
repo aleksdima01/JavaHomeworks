@@ -1,12 +1,10 @@
 package OOPHomework3;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class StudentController {
 
-    // private StudentsGroupService studentsGroupService;
     public static void main(String[] args) {
         Student student1 = new Student(12, "Иванов", "Иван", "Иванович");
         Student student2 = new Student(13, "Петров", "Иван", "Иванович");
@@ -32,10 +30,10 @@ public class StudentController {
         studentsGroup4.addStudent(student8);
         studentsGroup3.addStudent(student9);
         StudentsGroupService studentsGroupService = new StudentsGroupService();
-        //  studentsGroupService.setStudentsGroup(studentsGroup1);
-        // System.out.println(studentsGroup1);
-        //studentsGroupService.removeStudentByFIO("Романов", "Сергей", "Иванович");
-        // System.out.println(studentsGroup1);
+        studentsGroupService.setStudentsGroup(studentsGroup2);
+        System.out.println(studentsGroup2);
+        studentsGroupService.removeStudentByFIO("Романов", "Сергей", "Иванович");
+        System.out.println(studentsGroup2);
         List<StudentsGroup> streamList1 = new ArrayList<>();
         List<StudentsGroup> streamList2 = new ArrayList<>();
         streamList1.add(studentsGroup1);
@@ -45,11 +43,10 @@ public class StudentController {
         streamList2.add(studentsGroup5);
         Stream stream1 = new Stream(streamList1);
         Stream stream2 = new Stream(streamList2);
+        System.out.println(stream1.iterator());
         System.out.println("Поток 1: " + stream1);
         System.out.println("Поток 2: " + stream2);
         //  stream1.addGroup(studentsGroup3);
-        // System.out.println(stream1);
-        // System.out.println(stream1.iterator());
         // System.out.println(stream1.getCountGroups());
         // System.out.println(stream2.getCountGroups());
         //   System.out.println(stream1.compareTo(stream2));

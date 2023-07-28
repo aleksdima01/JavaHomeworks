@@ -45,15 +45,6 @@ public class Student implements Comparable<Student> {
         this.lastName = lastName;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        Student student = (Student) o;
-//        return (this.firstName.equals(student.firstName)
-//                && this.secondName.equals(student.secondName)
-//                && this.lastName.equals(student.lastName));
-//
-//    }
 
     @Override
     public String toString() {

@@ -32,7 +32,7 @@ public class StudentsGroup implements Iterable<Student> {
     public String toString() {
         return "StudentsGroup{" +
                 "students=" + studentsList +
-                '}';
+                '}' + "\t";
     }
 
     @Override
