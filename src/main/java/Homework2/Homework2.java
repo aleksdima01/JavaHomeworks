@@ -1,9 +1,10 @@
 package Homework2;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.*;
-import org.json.JSONObject;
+
 
 public class Homework2 {
     static Scanner scanner = new Scanner(System.in);
@@ -23,7 +24,7 @@ public class Homework2 {
             switch (no) {
 
                 case 1:
-                    sql();
+                    //  sql();
                     break;
                 case 2:
                     System.out.println("Выбрана сортировка пузырьком с логированием!");
@@ -54,7 +55,7 @@ public class Homework2 {
         logger.addHandler(fh);
         SimpleFormatter sFormat = new SimpleFormatter();
         fh.setFormatter(sFormat);
-        int[] array = { 9, 9, 7, 6, 4, 5, 5, 3, 2, 8, 1, 1 };
+        int[] array = {9, 9, 7, 6, 4, 5, 5, 3, 2, 8, 1, 1};
         int box = 0;
         for (int j = 0; j < array.length; j++) {
 
@@ -71,28 +72,27 @@ public class Homework2 {
         System.out.println(Arrays.toString(array));
     }
 
-     public static void sql() {
-     String inputString = " select * from students where ";
-     System.out.print(inputString);
-     StringBuilder parameters = new StringBuilder();
-     String json = "{\"name\":\"Ivanov\", \"country\":\"Russia\",\"city\":\"Moscow\", \"age\":\"null\"}";
-
-     JSONObject jsonObject = new JSONObject(json);
-
-     for (String key : jsonObject.keySet()) {
-     String value = jsonObject.getString(key);
-     if (!value.equals("null")) {
-     if (parameters.length() > 0) {
-     parameters.append(" AND ");
-     }
-     parameters.append(key).append(" = '").append(value).append("'");
-     }
-     }
-
-     System.out.println(parameters.toString());
-
-     }
-
+//    public static void sql() {
+//        String inputString = " select * from students where ";
+//        System.out.print(inputString);
+//        StringBuilder parameters = new StringBuilder();
+//        String json = "{\"name\":\"Ivanov\", \"country\":\"Russia\",\"city\":\"Moscow\", \"age\":\"null\"}";
+//
+//        JSONObject jsonObject = new JSONObject(json);
+//
+//        for (String key : jsonObject.keySet()) {
+//            String value = jsonObject.getString(key);
+//            if (!value.equals("null")) {
+//                if (parameters.length() > 0) {
+//                    parameters.append(" AND ");
+//                }
+//                parameters.append(key).append(" = '").append(value).append("'");
+//            }
+//        }
+//
+//        System.out.println(parameters.toString());
+//
+//    }
 
 
     public static void calculator() throws IOException {
@@ -157,36 +157,36 @@ public class Homework2 {
          * Студент Краснов получил 5 по предмету Физика.
          */
 
-         final String JSON =
-                    "[{\"фамилия\":\"Иванов\",\"оценка\":\"5\", \"предмет\":\"Математика\"}," +
-                            "{\"фамилия\" : \"Петрова\" ,\"оценка\" :\"4\" ,\"предмет\" : \"Информатика\"}," +
-                            "{\"фамилия\":\"Краснов\",\"оценка\":\"5\",\"предмет\":\"Физика\"}]";
-             final String ELEMENT1 = "Студент ";
-            final String ELEMENT2 = " получил ";
-             final String ELEMENT3 = " по предмету ";
+        final String JSON =
+                "[{\"фамилия\":\"Иванов\",\"оценка\":\"5\", \"предмет\":\"Математика\"}," +
+                        "{\"фамилия\" : \"Петрова\" ,\"оценка\" :\"4\" ,\"предмет\" : \"Информатика\"}," +
+                        "{\"фамилия\":\"Краснов\",\"оценка\":\"5\",\"предмет\":\"Физика\"}]";
+        final String ELEMENT1 = "Студент ";
+        final String ELEMENT2 = " получил ";
+        final String ELEMENT3 = " по предмету ";
 
 
-                StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
-                String newJSON = JSON
-                        .replaceAll("\\{", "")
-                        .replaceAll("\\}", "")
-                        .replace("\"", "")
-                        .replace("[", " ")
-                        .replace("]", " ");
-                System.out.println(newJSON);
-                String[] parts = newJSON.split(",");
-                for (String part : parts) {
-                    String[] params = part.split(":");
-                    if ("фамилия".equals(params[0].trim())) {
-                        sb = new StringBuilder(ELEMENT1)
-                                .append(params[1]);
-                    } else if ("оценка".equals(params[0].trim()))
-                        sb.append(ELEMENT2)
-                                .append(params[1]);
-                    else if ("предмет".equals(params[0].trim())) {
-                        sb.append(ELEMENT3).append(params[1]);
-                        System.out.println(sb);
+        String newJSON = JSON
+                .replaceAll("\\{", "")
+                .replaceAll("\\}", "")
+                .replace("\"", "")
+                .replace("[", " ")
+                .replace("]", " ");
+        System.out.println(newJSON);
+        String[] parts = newJSON.split(",");
+        for (String part : parts) {
+            String[] params = part.split(":");
+            if ("фамилия".equals(params[0].trim())) {
+                sb = new StringBuilder(ELEMENT1)
+                        .append(params[1]);
+            } else if ("оценка".equals(params[0].trim()))
+                sb.append(ELEMENT2)
+                        .append(params[1]);
+            else if ("предмет".equals(params[0].trim())) {
+                sb.append(ELEMENT3).append(params[1]);
+                System.out.println(sb);
 
 
             }
