@@ -12,4 +12,5 @@ public class Main {
         ViewCalculator view = new ViewCalculator(calculableFactory);
         view.run();
     }
+
 }

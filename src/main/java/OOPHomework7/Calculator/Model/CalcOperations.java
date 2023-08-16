@@ -1,9 +1,13 @@
 package OOPHomework7.Calculator.Model;
 
 public interface CalcOperations {
-    CalcOperations sum(int arg);
+    CalcOperations sum(NumberComplex arg);
 
-    CalcOperations multi(int arg);
+    CalcOperations multi(NumberComplex arg);
 
-    int getResult();
+    CalcOperations diff(NumberComplex arg);
+
+    CalcOperations div(NumberComplex arg);
+
+    NumberComplex getResult();
 }

@@ -1,9 +1,6 @@
 package OOPHomework7.Calculator.Logger;
 
-import OOPHomework7.Calculator.Model.CalcOperations;
-import OOPHomework7.Calculator.Model.Calculator;
-import OOPHomework7.Calculator.Model.ICalculableFactory;
-import OOPHomework7.Calculator.Model.CalcOperationsLogger;
+import OOPHomework7.Calculator.Model.*;
 
 public class LogCalculableFactory implements ICalculableFactory {
 
@@ -14,7 +11,7 @@ public class LogCalculableFactory implements ICalculableFactory {
     }
 
     @Override
-    public CalcOperations create(int primaryArg) {
+    public CalcOperations create(NumberComplex primaryArg) {
         return new CalcOperationsLogger(new Calculator(primaryArg), logger);
     }
 }

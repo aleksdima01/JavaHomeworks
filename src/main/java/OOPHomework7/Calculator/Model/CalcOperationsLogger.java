@@ -13,27 +13,45 @@ public class CalcOperationsLogger implements CalcOperations {
     }
 
     @Override
-    public CalcOperations sum(int arg) {
-        int firstArg = decorated.getResult();
-        logger.log(String.format("Первое значение калькулятора %d. Начало вызова метода sum с параметром %d", firstArg, arg));
+    public CalcOperations sum(NumberComplex arg) {
+        NumberComplex firstArg = decorated.getResult();
+        //logger.log(String.format("Первое значение калькулятора %d. Начало вызова метода sum с параметром %d", firstArg, arg));
         CalcOperations result = decorated.sum(arg);
-        logger.log(String.format("Вызова метода sum произошел"));
+        //  logger.log(String.format("Вызова метода sum произошел"));
         return result;
     }
 
     @Override
-    public CalcOperations multi(int arg) {
-        int firstArg = decorated.getResult();
-        logger.log(String.format("Первое значение калькулятора %d. Начало вызова метода multi с параметром %d", firstArg, arg));
+    public CalcOperations multi(NumberComplex arg) {
+        NumberComplex firstArg = decorated.getResult();
+        //logger.log(String.format("Первое значение калькулятора %d. Начало вызова метода multi с параметром %d", firstArg, arg));
         CalcOperations result = decorated.multi(arg);
-        logger.log(String.format("Вызова метода multi произошел"));
+        // logger.log(String.format("Вызова метода multi произошел"));
         return result;
     }
 
     @Override
-    public int getResult() {
-        int result = decorated.getResult();
-        logger.log(String.format("Получение результата %d", result));
+    public CalcOperations diff(NumberComplex arg) {
+        NumberComplex firstArg = decorated.getResult();
+        //   logger.log(String.format("Первое значение калькулятора %d. Начало вызова метода difference с параметром %d", firstArg, arg));
+        CalcOperations result = decorated.diff(arg);
+        //   logger.log(String.format("Вызова метода multi произошел"));
+        return result;
+    }
+
+    @Override
+    public CalcOperations div(NumberComplex arg) {
+        NumberComplex firstArg = decorated.getResult();
+        //  logger.log(String.format("Первое значение калькулятора %d. Начало вызова метода division с параметром %d", firstArg, arg));
+        CalcOperations result = decorated.div(arg);
+        //     logger.log(String.format("Вызова метода multi произошел"));
+        return result;
+    }
+
+    @Override
+    public NumberComplex getResult() {
+        NumberComplex result = decorated.getResult();
+        //  logger.log(String.format("Получение результата %d", result));
         return result;
     }
 }
