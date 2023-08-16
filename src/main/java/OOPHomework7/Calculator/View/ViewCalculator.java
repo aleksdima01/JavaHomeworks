@@ -16,20 +16,20 @@ public class ViewCalculator {
 
     public void run() {
         while (true) {
-            int primaryArgReal = promptInt("Введите вещественную часть первого аргумента: ");
-            int primaryArgImaginary = promptInt("Введите мнимую часть первого аргумента: ");
+            double primaryArgReal = promptNumber("Введите вещественную часть первого аргумента: ");
+            double primaryArgImaginary = promptNumber("Введите мнимую часть первого аргумента: ");
             CalcOperations calculator = calculableFactory.create(new NumberComplex(primaryArgReal, primaryArgImaginary));
             while (true) {
                 String cmd = prompt("Введите команду (*, +, /, -, =) : ");
                 if (cmd.equals("*")) {
-                    int argReal = promptInt("Введите вещественную часть второго аргумента: ");
-                    int argImaginary = promptInt("Введите мнимую часть второго аргумента: ");
+                    double argReal = promptNumber("Введите вещественную часть второго аргумента: ");
+                    double argImaginary = promptNumber("Введите мнимую часть второго аргумента: ");
                     calculator.multi(new NumberComplex(argReal, argImaginary));
                     continue;
                 }
                 if (cmd.equals("+")) {
-                    int argReal = promptInt("Введите вещественную часть второго аргумента: ");
-                    int argImaginary = promptInt("Введите мнимую часть второго аргумента: ");
+                    double argReal = promptNumber("Введите вещественную часть второго аргумента: ");
+                    double argImaginary = promptNumber("Введите мнимую часть второго аргумента: ");
                     calculator.sum(new NumberComplex(argReal, argImaginary));
                     continue;
                 }
@@ -39,15 +39,18 @@ public class ViewCalculator {
                     break;
                 }
                 if (cmd.equals("-")) {
-                    int argReal = promptInt("Введите вещественную часть второго аргумента: ");
-                    int argImaginary = promptInt("Введите мнимую часть второго аргумента: ");
+                    double argReal = promptNumber("Введите вещественную часть второго аргумента: ");
+                    double argImaginary = promptNumber("Введите мнимую часть второго аргумента: ");
                     calculator.diff(new NumberComplex(argReal, argImaginary));
                     continue;
                 }
                 if (cmd.equals("/")) {
-                    int argReal = promptInt("Введите вещественную часть второго аргумента: ");
-                    int argImaginary = promptInt("Введите мнимую часть второго аргумента: ");
+                    double argReal = promptNumber("Введите вещественную часть второго аргумента: ");
+                    double argImaginary = promptNumber("Введите мнимую часть второго аргумента: ");
                     calculator.div(new NumberComplex(argReal, argImaginary));
+                    continue;
+                } else {
+                    System.out.println("Введена неверная команда! Повторите ввод");
                     continue;
                 }
             }
@@ -55,7 +58,7 @@ public class ViewCalculator {
 
 
             while (!cmd.equalsIgnoreCase("y") && !cmd.equalsIgnoreCase("n")) {
-                System.out.println("Введена неверная команда! Повторите ввод");
+                System.out.println("Введена неверная команда! Повторите ввод!");
                 cmd = prompt("Еще посчитать (Y/N)?");
             }
 
@@ -75,9 +78,9 @@ public class ViewCalculator {
         return in.nextLine();
     }
 
-    private int promptInt(String message) {
+    private double promptNumber(String message) {
         Scanner in = new Scanner(System.in);
         System.out.print(message);
-        return Integer.parseInt(in.nextLine());
+        return Double.parseDouble(in.nextLine());
     }
 }

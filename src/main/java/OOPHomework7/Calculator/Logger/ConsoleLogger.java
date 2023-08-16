@@ -1,9 +1,16 @@
 package OOPHomework7.Calculator.Logger;
 
-public class ConsoleLogger implements Loggable {
+import Homework4.Homework4;
 
-    @Override
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ConsoleLogger {
+
+
+    private Logger logger = Logger.getLogger(Homework4.class.getName());
+
     public void log(String message) {
-        System.out.println("LOG:" + message);
+        logger.log(Level.INFO, message);
     }
 }
