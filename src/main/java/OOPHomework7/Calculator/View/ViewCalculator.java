@@ -86,11 +86,6 @@ public class ViewCalculator {
         Scanner scanner = new Scanner(System.in);
         System.out.print(message);
         scanner.useLocale(Locale.US);
-        while (scanner.nextLine().isEmpty()) {
-            System.out.println("Пустая строка!");
-            System.out.print(message);
-            System.out.println(" ");
-        }
         while (!scanner.hasNextDouble() && !scanner.hasNextInt()) {
             System.out.println("Введите число!");
             System.out.print(message);
