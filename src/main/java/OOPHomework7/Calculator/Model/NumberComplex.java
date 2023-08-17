@@ -1,7 +1,9 @@
 package OOPHomework7.Calculator.Model;
 
+/**
+ * Класс задающий поведение комплексного числа
+ */
 public class NumberComplex {
-
     double real;
     double imaginary;
 

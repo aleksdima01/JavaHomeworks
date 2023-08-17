@@ -2,6 +2,9 @@ package OOPHomework7.Calculator.Model;
 
 import OOPHomework7.Calculator.Logger.ConsoleLogger;
 
+/**
+ * Класс, переопределяющий поведение операций калькулятора с логированием.
+ */
 
 public class CalculatorWithLogger implements CalcOperations {
 

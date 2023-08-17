@@ -1,8 +1,10 @@
 package OOPHomework7.Calculator.Model;
 
+/**
+ * Класс, описывающий поведение операций калькулятора.
+ */
 public final class Calculator implements CalcOperations {
 
-    // private int primaryArg;
     private NumberComplex complexNumber;
 
     public Calculator(NumberComplex primaryArg) {

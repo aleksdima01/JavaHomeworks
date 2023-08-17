@@ -4,8 +4,12 @@ import OOPHomework7.Calculator.Model.CalcOperations;
 import OOPHomework7.Calculator.Model.ICalculableFactory;
 import OOPHomework7.Calculator.Model.NumberComplex;
 
+import java.util.Locale;
 import java.util.Scanner;
 
+/**
+ * Класс описывает логику ввода-вывода.
+ */
 public class ViewCalculator {
 
     private ICalculableFactory calculableFactory;
@@ -78,9 +82,24 @@ public class ViewCalculator {
         return in.nextLine();
     }
 
-    private double promptNumber(String message) {
-        Scanner in = new Scanner(System.in);
+    private Double promptNumber(String message) {
+        Scanner scanner = new Scanner(System.in);
         System.out.print(message);
-        return Double.parseDouble(in.nextLine());
+        scanner.useLocale(Locale.US);
+        while (scanner.nextLine().isEmpty()) {
+            System.out.println("Пустая строка!");
+            System.out.print(message);
+            System.out.println(" ");
+        }
+        while (!scanner.hasNextDouble() && !scanner.hasNextInt()) {
+            System.out.println("Введите число!");
+            System.out.print(message);
+            scanner.nextLine();
+        }
+
+        return Double.parseDouble(scanner.nextLine());
+
     }
+
+
 }

@@ -5,6 +5,9 @@ import Homework4.Homework4;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Класс, задающий поведение логера.
+ */
 public class ConsoleLogger {
 
 

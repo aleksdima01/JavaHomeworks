@@ -1,5 +1,8 @@
 package OOPHomework7.Calculator.Model;
 
+/**
+ * Интерфейс, создающий операций калькулятора
+ */
 public interface CalcOperations {
     CalcOperations sum(NumberComplex arg);
 
