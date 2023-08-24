@@ -133,6 +133,24 @@ public class LinkedList<T> {
         head = null;
     }
 
+    /**
+     * Разворот односвязного списка
+     *
+     * @param list передаваемый список
+     */
+    public void rotate(LinkedList list) {
+        Node previousNode = null;
+        Node node = list.getHead();
+        while (node != null) {
+            Node nextNode = node.next;
+            node.next = previousNode;
+            previousNode = node;
+            node = nextNode;
+
+        }
+        list.head = previousNode;
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

@@ -16,15 +16,14 @@ public class Program {
         employeeLinkedList.addFirst(employee2);
         System.out.println(employeeLinkedList);
         System.out.println();
-        //boolean res = employeeLinkedList.contains(employee1);
+//        boolean res = employeeLinkedList.contains(employee1);
 //        employeeLinkedList.sort(new EmployeeNameComparator(SortType.Ascending));
 //        System.out.println(employeeLinkedList);
 //        System.out.println();
 //        employeeLinkedList.sort(new EmployeeNameComparator(SortType.Descending));
 //        System.out.println(employeeLinkedList);
 //        System.out.println();
-        RotateLinkedList rotateList = new RotateLinkedList();
-        rotateList.rotate(employeeLinkedList);
+        employeeLinkedList.rotate(employeeLinkedList);
         System.out.println(employeeLinkedList);
         System.out.println();
     }
