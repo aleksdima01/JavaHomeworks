@@ -1,8 +1,9 @@
 package AlgorithmsHomework4;
 
-import java.util.Iterator;
 
-public class HashMap<K, V> implements Iterable<HashMap.Entity> {
+import java.util.ArrayList;
+
+public class HashMap<K, V> /*implements Iterable<HashMap.Entity>*/ {
 
 
     private static final int INIT_BUCKET_COUNT = 16;
@@ -12,78 +13,78 @@ public class HashMap<K, V> implements Iterable<HashMap.Entity> {
     private int size;
 
 
-    @Override
-    public Iterator<HashMap.Entity> iterator() {
-        return new HashMapIterator();
-    }
+//    @Override
+//    public Iterator<HashMap.Entity> iterator() {
+//        return new HashMapIterator();
+//    }
 
-    class HashMapIterator implements Iterator<HashMap.Entity> {
-
-        /**
-         * TODO: Необходимо доработать структуру класса HashMap, реализованную на семинаре.
-         * У нас появились методы добавления, удаления и поиска элемента по ключу.
-         * Добавить возможность перебора всех элементов нашей структуры данных,
-         * необходимо добавить несколько элементов,
-         * а затем перебрать все элементы таблицы используя цикл foreach.
-         * Подумайте, возможно вам стоит обратиться к интерфейсу Iterable.
-         *
-         * @return
-         */
-
-
-        int counterBucket = 0;
-        int valuesCounter = 0;
-        HashMapIterator mapIterator = null;
-
-        @Override
-        public boolean hasNext() {
-            if (valuesCounter == size)
-                return false;
-            if (mapIterator == null || !mapIterator.hasNext()) {
-                if(moveToNext()){
-                    mapIterator=buckets[counterBucket].;
-                }
-                else {return false;}
-
-            }
-            return mapIterator.hasNext();
-        }
-
-        private boolean moveToNext() {
-            counterBucket++;
-            while (counterBucket < buckets.length && buckets[counterBucket] == null) {
-                counterBucket++;
-            }
-            return counterBucket < buckets.length && buckets[counterBucket] != null;
-        }
-
-//            Bucket[] copyBucket = buckets;
-//            boolean result = false;
-//            for (int i = 0; i < copyBucket.length; i++) {
+//    class HashMapIterator implements Iterator<HashMap.Entity> {
 //
-//                //Bucket bucket = copyBucket[i];
-//                Bucket bucketNext = copyBucket[i + 1];
-//                if (bucketNext != null)
-//                    result = true;
-//                else result = false;
-//                result = false;
-//                if (bucket != null) {
-////                    Bucket.Node node = bucket.head;
-////                    while (node != null) {
-////                        node = node.next;
-//                    result = true;
-//                    //   }
-//                } else result = false;
+//        /**
+//         * TODO: Необходимо доработать структуру класса HashMap, реализованную на семинаре.
+//         * У нас появились методы добавления, удаления и поиска элемента по ключу.
+//         * Добавить возможность перебора всех элементов нашей структуры данных,
+//         * необходимо добавить несколько элементов,
+//         * а затем перебрать все элементы таблицы используя цикл foreach.
+//         * Подумайте, возможно вам стоит обратиться к интерфейсу Iterable.
+//         *
+//         * @return
+//         */
+//
+//
+//        int counterBucket = 0;
+//        int valuesCounter = 0;
+//        HashMapIterator mapIterator = null;
+//
+//        @Override
+//        public boolean hasNext() {
+//            if (valuesCounter == size)
+//                return false;
+//            if (mapIterator == null || !mapIterator.hasNext()) {
+//                if(moveToNext()){
+//                    mapIterator=buckets[counterBucket].;
+//                }
+//                else {return false;}
+//
 //            }
-
-
-        @Override
-        public Entity next() {
-            valuesCounter++;
-            return mapIterator.next();
-        }
-
-    }
+//            return mapIterator.hasNext();
+//        }
+//
+//        private boolean moveToNext() {
+//            counterBucket++;
+//            while (counterBucket < buckets.length && buckets[counterBucket] == null) {
+//                counterBucket++;
+//            }
+//            return counterBucket < buckets.length && buckets[counterBucket] != null;
+//        }
+//
+////            Bucket[] copyBucket = buckets;
+////            boolean result = false;
+////            for (int i = 0; i < copyBucket.length; i++) {
+////
+////                //Bucket bucket = copyBucket[i];
+////                Bucket bucketNext = copyBucket[i + 1];
+////                if (bucketNext != null)
+////                    result = true;
+////                else result = false;
+////                result = false;
+////                if (bucket != null) {
+//////                    Bucket.Node node = bucket.head;
+//////                    while (node != null) {
+//////                        node = node.next;
+////                    result = true;
+////                    //   }
+////                } else result = false;
+////            }
+//
+//
+//        @Override
+//        public Entity next() {
+//            valuesCounter++;
+//            return mapIterator.next();
+//        }
+//
+//    }
 
     /**
      * TODO: Вывести все элементы хеш-таблицы на экран через toString()
@@ -92,7 +93,24 @@ public class HashMap<K, V> implements Iterable<HashMap.Entity> {
      */
     @Override
     public String toString() {
-        return super.toString();
+//        ArrayList list = new ArrayList<>();
+//        for (int i = 0; i < buckets.length; i++) {
+//            if (buckets[i] != null) {
+//                list.add(buckets[i]);
+//            }
+//        }
+        //  return list.toString();
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < buckets.length; i++) {
+            if (buckets[i] != null) {
+                stringBuilder.append(buckets[i]);
+                if (buckets[i] != null)
+                    stringBuilder.append('\n');
+            }
+
+        }
+        return stringBuilder.toString();
     }
 
 
@@ -111,6 +129,13 @@ public class HashMap<K, V> implements Iterable<HashMap.Entity> {
          */
         V value;
 
+        @Override
+        public String toString() {
+            return "Entity{" +
+                    "key=" + key +
+                    ", value=" + value +
+                    '}';
+        }
     }
 
     /**
@@ -138,6 +163,12 @@ public class HashMap<K, V> implements Iterable<HashMap.Entity> {
              */
             Entity value;
 
+            @Override
+            public String toString() {
+                return "Node{" +
+                        "value=" + value +
+                        '}';
+            }
         }
 
         public V add(Entity entity) {
@@ -196,6 +227,26 @@ public class HashMap<K, V> implements Iterable<HashMap.Entity> {
             return null;
         }
 
+        @Override
+        public String toString() {
+            boolean a = false;
+            Node node = head.next;
+            ArrayList nextHead = new ArrayList();
+            while (node != null) {
+                nextHead.add(node);
+                node = node.next;
+            }
+            if (nextHead.size() != 0) {
+                return "Bucket{" +
+                        "head=" + head + " " +
+                        nextHead +
+                        '}' + "\n";
+            } else {
+                return "Bucket{" +
+                        "head=" + head +
+                        '}' + "\n";
+            }
+        }
     }
 
     private int calculateBucketIndex(K key) {

@@ -10,7 +10,7 @@ public class Program {
         System.out.println(employee2.hashCode());
 
 
-        HashMap<String, String> hashMap1 = new HashMap<>(4);
+        HashMap<String, String> hashMap1 = new HashMap<>(2);
 
         String oldValue;
         oldValue = hashMap1.put("+79007774431", "AAAAAAA");
@@ -28,12 +28,13 @@ public class Program {
         String res = hashMap1.get("+79007774435");
         res = hashMap1.get("+79107774435");
 
-        oldValue = hashMap1.remove("+79007774435");
-        oldValue = hashMap1.remove("+79007774435");
+        //  oldValue = hashMap1.remove("+79007774435");
+        // oldValue = hashMap1.remove("+79007774435");
 
-        for (HashMap<String, String>.Entity element : hashMap1) {
-            System.out.println(element.key);
-        }
+//        for (HashMap<String, String>.Entity element : hashMap1) {
+//            System.out.println(element.key);
+//        }
+        System.out.println(hashMap1);
 
 
     }
