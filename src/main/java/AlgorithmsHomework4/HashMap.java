@@ -2,24 +2,27 @@ package AlgorithmsHomework4;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class HashMap<K, V> /*implements Iterable<HashMap.Entity>*/ {
+public class HashMap<K, V> implements Iterable<HashMap.Entity> {
 
 
     private static final int INIT_BUCKET_COUNT = 16;
     private static final double LOAD_FACTOR = 0.5;
 
     private Bucket[] buckets;
+    private Bucket.Node currentNode;
+    private int currentIndex;
     private int size;
 
 
-//    @Override
-//    public Iterator<HashMap.Entity> iterator() {
-//        return new HashMapIterator();
-//    }
+    @Override
+    public Iterator<HashMap.Entity> iterator() {
+        return new HashMapIterator();
+    }
 
-//    class HashMapIterator implements Iterator<HashMap.Entity> {
-//
+    class HashMapIterator implements Iterator<HashMap.Entity> {
+        //
 //        /**
 //         * TODO: Необходимо доработать структуру класса HashMap, реализованную на семинаре.
 //         * У нас появились методы добавления, удаления и поиска элемента по ключу.
@@ -32,59 +35,62 @@ public class HashMap<K, V> /*implements Iterable<HashMap.Entity>*/ {
 //         */
 //
 //
-//        int counterBucket = 0;
-//        int valuesCounter = 0;
-//        HashMapIterator mapIterator = null;
 //
-//        @Override
-//        public boolean hasNext() {
-//            if (valuesCounter == size)
-//                return false;
-//            if (mapIterator == null || !mapIterator.hasNext()) {
-//                if(moveToNext()){
-//                    mapIterator=buckets[counterBucket].;
-//                }
-//                else {return false;}
-//
-//            }
-//            return mapIterator.hasNext();
-//        }
-//
-//        private boolean moveToNext() {
-//            counterBucket++;
-//            while (counterBucket < buckets.length && buckets[counterBucket] == null) {
-//                counterBucket++;
-//            }
-//            return counterBucket < buckets.length && buckets[counterBucket] != null;
-//        }
-//
-////            Bucket[] copyBucket = buckets;
-////            boolean result = false;
-////            for (int i = 0; i < copyBucket.length; i++) {
-////
-////                //Bucket bucket = copyBucket[i];
-////                Bucket bucketNext = copyBucket[i + 1];
-////                if (bucketNext != null)
-////                    result = true;
-////                else result = false;
-////                result = false;
-////                if (bucket != null) {
-//////                    Bucket.Node node = bucket.head;
-//////                    while (node != null) {
-//////                        node = node.next;
-////                    result = true;
-////                    //   }
-////                } else result = false;
-////            }
-//
-//
-//        @Override
-//        public Entity next() {
-//            valuesCounter++;
-//            return mapIterator.next();
-//        }
-//
-//    }
+        @Override
+        public boolean hasNext() {
+            if (currentNode == null) {
+                for (int i = 0; i < buckets.length; i++)
+                    if (buckets[i] != null && buckets[i].head != null) {
+                        currentIndex = i;
+                        currentNode = buckets[i].head;
+                        return true;
+                    }
+                return false;
+            } else {
+                if (get((K) currentNode.value.key) == null) {
+                    currentNode = null;
+                    currentIndex = 0;
+                    return hasNext();
+                } else {
+                    HashMap.Bucket.Node node = currentNode;
+                    currentIndex = calculateBucketIndex((K) node.value.key);
+                    if (node.next != null) {
+                        currentNode = node.next;
+                        return true;
+                    }
+                    for (int i = ++currentIndex; i < buckets.length; i++) {
+                        if (buckets[i] != null && buckets[i].head != null) {
+                            currentIndex = i;
+                            currentNode = buckets[i].head;
+                            return true;
+                        }
+                    }
+                    currentNode = null;
+                    currentIndex = 0;
+                    return false;
+                }
+            }
+        }
+
+
+        public Entity next() {
+            if (currentNode == null) {
+                for (int i = 0; i < buckets.length; i++)
+                    if (buckets[i] != null && buckets[i].head != null) {
+                        currentIndex = i;
+                        currentNode = buckets[i].head;
+                        return currentNode.value;
+                    }
+                return null;
+            } else if (get((K) currentNode.value.key) == null) {
+                currentNode = null;
+                currentIndex = 0;
+                return null;
+            } else
+                return currentNode.value;
+        }
+
+    }
 
     /**
      * TODO: Вывести все элементы хеш-таблицы на экран через toString()
