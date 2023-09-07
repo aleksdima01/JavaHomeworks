@@ -6,9 +6,10 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class FileSave {
-    static String fileName = "src/main/java/ExceptionHomework3/File.txt";
+
 
     public void saveFile(ListUsers user) {
+        String fileName = String.format("src/main/java/ExceptionHomework3/%s", user.getUsers().get(0).getSurName());
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName))) {
             for (int i = 0; i < user.getUsers().size(); i++) {
                 bufferedWriter.write(String.format("%s %s %s %s %d %c\n", user.getUsers().get(i).getSurName(), user.getUsers().get(i).getName(),

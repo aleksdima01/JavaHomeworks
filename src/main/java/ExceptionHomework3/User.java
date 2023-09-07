@@ -1,5 +1,6 @@
 package ExceptionHomework3;
 
+import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,11 +12,11 @@ public class User {
     private String lastName;
 
     private String birthday;
-    private int phoneNumber;
+    private long phoneNumber;
     private char gender;
     ListUsers usersInUser = new ListUsers();
 
-    public User(String name, String surName, String lastName, String date, int phoneNumber, char gender) {
+    public User(String name, String surName, String lastName, String date, long phoneNumber, char gender) {
         this.name = name;
         this.surName = surName;
         this.lastName = lastName;
@@ -41,7 +42,7 @@ public class User {
         return birthday;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -72,7 +73,7 @@ public class User {
         }
         this.birthday = birthday.format(date);
         try {
-            this.phoneNumber = Integer.parseInt((String) inputLine.get(4));
+            this.phoneNumber = Long.parseLong(inputLine.get(4).toString());
         } catch (NumberFormatException ex) {
             System.out.println("Неправильный формат номера телефона! Номер должен быть числовым!");
             ex.printStackTrace();

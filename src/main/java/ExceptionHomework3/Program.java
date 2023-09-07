@@ -14,7 +14,14 @@ public class Program {
             System.out.println("2 - Показать пользователей");
             System.out.println("3 - Создание файла с пользователями");
             System.out.println("0 - Завершение работы приложения");
-            int no = Integer.parseInt(scanner.nextLine());
+            int no = 0;
+            try {
+                no = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException ex) {
+                System.out.println("Необходимо ввести число!");
+                ex.printStackTrace();
+            }
+
             System.out.println(" ");
             switch (no) {
 
@@ -26,15 +33,20 @@ public class Program {
                     break;
                 case 2:
                     System.out.println("Выбран показ пользователей!");
-                    System.out.println(allUsers);
+                    if (allUsers.getUsers().size() == 0) {
+                        System.out.println("Вы еще не добавили пользователей!");
+                    } else {
+                        System.out.println(allUsers);
+                    }
                     break;
                 case 3:
                     System.out.println("Создание файла с пользователями!");
                     FileSave fileSave = new FileSave();
                     if (allUsers.getUsers().size() == 0) {
-                        System.out.println("Вы еще не добавили пользователя!");
+                        System.out.println("Вы еще не добавили пользователей!");
                     } else {
                         fileSave.saveFile(allUsers);
+                        System.out.println("Файл создан!");
                     }
                     break;
                 case 0:
@@ -42,7 +54,7 @@ public class Program {
                     f = false;
                     break;
                 default:
-                    System.out.println("Некорректный номер задачи,\nповторите попытку ввода.");
+                    System.out.println("Некорректный номер задачи, повторите попытку ввода!");
                     break;
             }
         }
